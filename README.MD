@@ -1,3 +1,5 @@
+# Rendi Setiawan Jodi - 221011400830 - 07TPLP020
+
 # HealthyBite Drinks (PHP Native)
 Aplikasi rekomendasi jus & smoothie: pilih tujuan (Detox, Energy, Diet, Relax), lihat resep, dan hitung kalori per porsi. Admin bisa kelola resep (CRUD + upload gambar).
 
