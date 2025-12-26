@@ -8,11 +8,19 @@ require __DIR__.'/inc/header.php';
   <div class="hero-section">
     <div class="hero-content">
       <h2>Minuman sehat, mood oke, hidup asik ✨</h2>
-      <p>Nikmati berbagai resep jus dan smoothie sehat untuk berbagai kebutuhan. Tanpa login untuk pengguna. Admin bisa login untuk kelola resep.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="login.php">Login Admin</a>
-        <a class="btn btn-secondary" href="recommend.php?all=1">Lihat Semua Resep</a>
-      </div>
+      <p>Nikmati berbagai resep jus dan smoothie sehat untuk berbagai kebutuhan. Anda bisa login/daftar untuk melihat resep.</p>
+<div class="hero-actions">
+  <?php if (isset($_SESSION['user_id'])): ?>
+    <a class="btn btn-primary" href="logout.php">Logout</a>
+    <a class="btn btn-primary" href="recommend.php?all=1">Lihat Semua Resep</a>
+  <?php else: ?>
+    <a class="btn btn-primary" href="login.php">Login</a>
+    <a class="btn btn-secondary" href="register.php">Register</a>
+    <a class="btn btn-primary" href="register.php">Daftar untuk melihat resep</a>
+  <?php endif; ?>
+</div>
+
+
     </div>
   </div>
 
@@ -41,6 +49,15 @@ require __DIR__.'/inc/header.php';
       </a>
     </div>
   </section>
+  
+    <!-- Informasi umum tentang kesehatan (tampil di beranda sebelum login) -->
+    <section class="info-section">
+      <div class="container">
+        <h3>Tentang Kesehatan & Pola Hidup Sehat</h3>
+        <p>HealthyBite menyediakan informasi dan resep minuman sehat yang membantu mendukung pola hidup seimbang. Minuman berbahan buah, sayur, dan biji-bijian dapat menjadi sumber vitamin, serat, dan antioksidan. Penting untuk mengonsumsi variasi bahan alami, menjaga hidrasi, serta menggabungkan minuman sehat dengan pola makan dan aktivitas fisik yang teratur.</p>
+        <p>Daftar sebagai member untuk menyimpan resep favorit, melihat panduan porsi, dan mendapatkan rekomendasi yang disesuaikan dengan tujuan kesehatan Anda.</p>
+      </div>
+    </section>
 </main>
 
 <?php require __DIR__.'/inc/footer.php'; ?>

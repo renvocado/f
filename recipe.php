@@ -1,7 +1,18 @@
 <?php
 require __DIR__.'/inc/db.php'; 
 require __DIR__.'/inc/functions.php';
+
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+
 require __DIR__.'/inc/header.php';
+
 
 $id = (int)($_GET['id'] ?? 0);
 $recipe = find_recipe($pdo, $id);
@@ -10,11 +21,9 @@ if (!$recipe) die("Resep tidak ditemukan.");
 $serv = max(1, (int)($_GET['serv'] ?? 1));
 $total = calories_for_servings($recipe['cal_per_serv'], $serv);
 
-// ambil goal dari URL; kalau tak ada, pakai goal resep
 $goalParam = $_GET['goal'] ?? ($recipe['goal'] ?? 'detox');
 $backUrl   = "recommend.php?goal=" . urlencode($goalParam);
 
-// Tentukan ikon berdasarkan goal
 $goalIcons = [
     'detox' => '🌿',
     'energy' => '⚡', 
@@ -27,7 +36,7 @@ $goalIcon = $goalIcons[$goalParam] ?? '🍹';
 <main class="container">
   <div class="recipe-header">
     <div class="back-nav">
-      <a href="<?= $backUrl ?>" class="btn-back">
+      <a href="<?= $backUrl ?>" class="btn btn-primary">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
@@ -69,32 +78,7 @@ $goalIcon = $goalIcons[$goalParam] ?? '🍹';
       <div class="recipe-title-section">
         <h1 class="recipe-title"><?= h($recipe['name']) ?></h1>
         <p class="recipe-description">Resep sehat dan menyegarkan untuk tujuan <?= $goalParam ?> Anda.</p>
-      </div>
-
-      <div class="calculator-card">
-        <h3 class="calculator-title">Kalkulator Porsi</h3>
-        <form class="calculator-form" method="get">
-          <input type="hidden" name="id" value="<?= (int)$recipe['id'] ?>">
-          <div class="calculator-inputs">
-            <div class="input-group">
-              <label class="input-label">Jumlah Porsi</label>
-              <input type="number" min="1" max="10" name="serv" value="<?= $serv ?>" class="serving-input">
-            </div>
-            <button type="submit" class="btn btn-primary calculator-btn">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 7H15C16.1046 7 17 7.89543 17 9V15C17 16.1046 16.1046 17 15 17H9C7.89543 17 7 16.1046 7 15V9C7 7.89543 7.89543 7 9 7Z" stroke="currentColor" stroke-width="2"/>
-                <path d="M14 10L10 14M10 10L14 14" stroke="currentColor" stroke-width="2"/>
-              </svg>
-              Hitung
-            </button>
-          </div>
-        </form>
-        
-        <div class="total-calories">
-          <div class="total-label">Total Kalori</div>
-          <div class="total-value"><?= (int)$total ?> kkal</div>
-        </div>
-      </div>
+      </div>  
 
       <div class="ingredients-section">
         <div class="section-header">
@@ -128,5 +112,55 @@ $goalIcon = $goalIcons[$goalParam] ?? '🍹';
     </div>
   </div>
 </main>
+
+
+
+<div class="container">
+  <div class="print-toolbar print-card-box">
+    
+    <div class="print-left">
+      <h3 class="print-title">Cetak Resep</h3>
+      <p class="print-sub">Cetak resep dalam format versi catatan</p>
+    </div>
+
+    <button class="btn-print" onclick="window.print()">
+      🖨 Cetak Versi Catatan
+    </button>
+
+  </div>
+</div>
+
+
+<div class="print-note only-print">
+  <div class="print-card">
+
+    <h1 class="pn-name"><?= h($recipe['name']) ?></h1>
+
+    <div class="pn-meta">
+      <span>🍽 Porsi: <?= h($recipe['serving_desc']) ?></span>
+      <span>🔥 Kalori: <?= (int)$recipe['cal_per_serv'] ?> kkal</span>
+      <span>🎯 Goal: <?= strtoupper($goalParam) ?></span>
+    </div>
+
+    <h2>🧾 Bahan-bahan</h2>
+    <ul>
+      <?php foreach($recipe['ingredients'] as $i): ?>
+        <li><?= h($i) ?></li>
+      <?php endforeach; ?>
+    </ul>
+
+    <h2>👩‍🍳 Langkah Pembuatan</h2>
+    <ol>
+      <?php foreach($recipe['steps'] as $step): ?>
+        <li><?= h($step['content']) ?></li>
+      <?php endforeach; ?>
+    </ol>
+
+    <div class="pn-footer">
+      Dicetak dari HealthyBite — <?= date('d M Y') ?>
+    </div>
+
+  </div>
+</div>
 
 <?php require __DIR__.'/inc/footer.php'; ?>

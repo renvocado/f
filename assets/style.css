@@ -574,33 +574,7 @@ main {
   font-size: 0.9rem;
 }
 
-/* Empty State */
-.empty-state {
-  text-align: center;
-  padding: 60px 20px;
-  background: var(--white);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-
-.empty-icon {
-  font-size: 4rem;
-  margin-bottom: 20px;
-}
-
-.empty-state h3 {
-  font-size: 1.5rem;
-  color: var(--text);
-  margin-bottom: 12px;
-}
-
-.empty-state p {
-  color: var(--text-light);
-  margin-bottom: 24px;
-  max-width: 400px;
-  margin-left: auto;
-  margin-right: auto;
-}
+/* Empty state styles consolidated later in this file (removed duplicate here) */
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -1170,38 +1144,7 @@ main {
 }
 
 /* Alert Styles */
-.alert {
-    padding: 16px;
-    border-radius: 12px;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-}
-
-.alert-error {
-    background: rgba(244, 67, 54, 0.1);
-    border: 1px solid rgba(244, 67, 54, 0.2);
-    color: #d32f2f;
-}
-
-.alert-icon {
-    font-size: 1.2rem;
-    flex-shrink: 0;
-    margin-top: 2px;
-}
-
-.alert-content strong {
-    display: block;
-    margin-bottom: 4px;
-    font-weight: 600;
-}
-
-.alert-content p {
-    margin: 0;
-    font-size: 0.9rem;
-    opacity: 0.9;
-}
+/* Alert styles consolidated later in this file (kept single definition to avoid duplication) */
 
 /* Login Form */
 .login-form {
@@ -2037,3 +1980,125 @@ main {
         padding: 8px 16px;
     }
 }
+
+.print-toolbar {
+  margin-top: 20px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f3f6f8;
+  border-radius: 10px;
+}
+
+/* .print-title defined later with final weight — removed duplicate */
+
+.btn-print {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background: #2f7df6;
+  color: white;
+  font-weight: 600;
+}
+
+.btn-print:hover {
+  opacity: .9;
+}
+
+/* ❌ Jangan tampilkan konten print di layar */
+.only-print {
+  display: none;
+}
+
+/* 🖨 MODE CETAK */
+@media print {
+
+  /* sembunyikan UI aplikasi */
+  header, footer,
+  nav, .back-nav,
+  .recipe-detail,
+  .print-toolbar,
+  .btn {
+    display: none !important;
+  }
+
+  /* tampilkan kartu resep saja */
+  .only-print {
+    display: block !important;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  /* 🎨 Kartu resep cetak */
+  .print-card {
+    padding: 18px;
+    border-radius: 14px;
+    border: 1px solid #ddd;
+    font-family: "Segoe UI", Arial;
+  }
+
+  .pn-name {
+    margin: 0 0 6px 0;
+  }
+
+  .pn-meta {
+    font-size: 12px;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 12px;
+  }
+
+  .pn-footer {
+    margin-top: 16px;
+    font-size: 11px;
+    text-align: right;
+    opacity: .7;
+  }
+
+  ul, ol {
+    margin-top: 4px;
+  }
+}
+.print-card-box {
+  margin-top: 10px;
+  margin-bottom: 25px;
+  padding: 14px 18px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 8px 24px rgba(0,0,0,.06);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.print-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.print-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.print-sub {
+  margin: 2px 0 0;
+  color: #777;
+  font-size: 12px;
+}
+
+.btn-print {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+

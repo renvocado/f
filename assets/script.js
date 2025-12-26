@@ -113,19 +113,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // Add printing functionality
-  const printButton = document.createElement('button');
-  printButton.innerHTML = '🖨️ Cetak Resep';
-  printButton.className = 'btn btn-secondary';
-  printButton.style.marginTop = '20px';
-  printButton.addEventListener('click', function() {
-    window.print();
-  });
-  
-  const recipeContent = document.querySelector('.recipe-content');
-  if (recipeContent) {
-    recipeContent.appendChild(printButton);
-  }
+ 
   
   // Add image zoom effect
   const recipeImage = document.querySelector('.recipe-image');
@@ -135,3 +123,36 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+// Shared form enhancements (used by login/register forms)
+document.addEventListener('DOMContentLoaded', function() {
+  const inputs = document.querySelectorAll('.form-input');
+  inputs.forEach(input => {
+    input.addEventListener('focus', function() {
+      this.parentElement.classList.add('focused');
+    });
+    
+    input.addEventListener('blur', function() {
+      if (!this.value) {
+        this.parentElement.classList.remove('focused');
+      }
+    });
+
+    if (input.value) {
+      input.parentElement.classList.add('focused');
+    }
+  });
+
+  const forms = document.querySelectorAll('.login-form');
+  forms.forEach(form => {
+    form.addEventListener('submit', function() {
+      const btn = this.querySelector('.btn-login');
+      if (!btn) return;
+      const btnText = btn.querySelector('.btn-text');
+      if (btnText) btnText.textContent = 'Memproses...';
+      btn.disabled = true;
+    });
+  });
+});
+
+

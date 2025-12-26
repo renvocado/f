@@ -3,17 +3,23 @@ require __DIR__.'/inc/db.php';
 require __DIR__.'/inc/functions.php';
 require __DIR__.'/inc/header.php';
 
+// Batasi akses halaman rekomendasi hanya untuk member yang sudah login
+if (!isset($_SESSION['user_id'])) {
+  // arahkan ke halaman login; setelah login user bisa kembali ke rekomendasi
+  header('Location: login.php');
+  exit;
+}
+
 $goal = $_GET['goal'] ?? null;
 $q    = trim($_GET['q'] ?? "");
 $all  = isset($_GET['all']) && $_GET['all'] == '1';
 $sort = $_GET['sort'] ?? 'created_desc';
 
-// fungsi kecil buat whitelist ORDER BY
 function orderClause($sort){
   switch ($sort) {
     case 'name_asc':  return 'name ASC';
     case 'name_desc': return 'name DESC';
-    default:          return 'created_at DESC'; // terbaru (default)
+    default:          return 'created_at DESC'; 
   }
 }
 
@@ -41,7 +47,6 @@ if ($all) {
 }
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Tentukan judul halaman berdasarkan mode
 $pageTitle = "Rekomendasi";
 if ($mode === 'goal') {
   $goalTitles = [
@@ -61,7 +66,7 @@ if ($mode === 'goal') {
 <main class="container">
   <div class="page-header">
     <div class="back-nav">
-      <a href="index.php" class="btn-back">
+      <a href="index.php" class="btn btn-primary">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M19 12H5M12 19L5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>

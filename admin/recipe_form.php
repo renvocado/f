@@ -37,22 +37,19 @@ if ($editing) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  // ambil nilai form
   $name    = trim($_POST['name'] ?? '');
   $goal    = $_POST['goal'] ?? 'detox';
   $cal     = (int)($_POST['cal'] ?? 0);
   $serving = trim($_POST['serving'] ?? '');
-  $image   = trim($_POST['image'] ?? ''); // bisa kosong, nanti fallback
+  $image   = trim($_POST['image'] ?? ''); 
   $tags    = trim($_POST['tags'] ?? '');
   $ingredients = array_values(array_filter(array_map('trim', $_POST['ingredients'] ?? [])));
   $steps       = array_values(array_filter(array_map('trim', $_POST['steps'] ?? [])));
 
-  // VALIDASI MINIMAL
   if ($name === '' || $serving === '' || $cal < 0) {
     die("Data belum lengkap.");
   }
 
-  // ====== HANDLE FILE UPLOAD (opsional) ======
   if (!empty($_FILES['imgfile']['name']) && $_FILES['imgfile']['error'] === UPLOAD_ERR_OK) {
     $size = $_FILES['imgfile']['size'];
     if ($size > 8 * 1024 * 1024) { // 8MB
@@ -65,7 +62,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       die("Ekstensi tidak diperbolehkan.");
     }
 
-    // cek mime
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
     $mime  = finfo_file($finfo, $_FILES['imgfile']['tmp_name']);
     finfo_close($finfo);
@@ -73,29 +69,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       die("File bukan gambar valid.");
     }
 
-    // simpan file
     $fname = 'img_' . time() . '_' . bin2hex(random_bytes(3)) . '.' . $ext;
     $dest  = __DIR__ . '/../assets/img/' . $fname;
     if (!move_uploaded_file($_FILES['imgfile']['tmp_name'], $dest)) {
       die("Gagal menyimpan file upload.");
     }
-    // pakai path lokal sebagai image
     $image = 'assets/img/' . $fname;
   }
 
-  // jika TIDAK upload & kolom URL kosong saat EDIT → pertahankan gambar lama
   if ($editing && $image === '') {
     $image = $existingImage;
   }
 
-  // ====== SIMPAN DB ======
   if ($editing) {
     $stmt = $pdo->prepare("UPDATE recipes 
       SET name=?, goal=?, cal_per_serv=?, serving_desc=?, image=?, tags=? 
       WHERE id=?");
     $stmt->execute([$name, $goal, $cal, $serving, $image, $tags, $id]);
 
-    // replace bahan & langkah
     $pdo->prepare("DELETE FROM recipe_ingredients WHERE recipe_id=?")->execute([$id]);
     $pdo->prepare("DELETE FROM recipe_steps WHERE recipe_id=?")->execute([$id]);
 
@@ -157,7 +148,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="form-container-wide">
             <form method="post" class="recipe-form" enctype="multipart/form-data">
                 <div class="form-grid">
-                    <!-- Kolom Kiri - Informasi Dasar -->
                     <div class="form-column">
                         <div class="form-section">
                             <h3>Informasi Dasar</h3>
@@ -234,7 +224,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     </div>
 
-                    <!-- Kolom Kanan - Bahan dan Langkah -->
                     <div class="form-column">
                         <div class="form-section">
                             <h3>Bahan-bahan</h3>
@@ -302,7 +291,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Fungsi untuk membuat item dinamis baru
         function createDynamicItem(name, placeholder) {
             const item = document.createElement('div');
             item.className = 'dynamic-item';
@@ -337,19 +325,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             return item;
         }
         
-        // Tombol tambah bahan
         document.getElementById('add-ing').addEventListener('click', function() {
             const container = document.getElementById('ing-wrap');
             container.appendChild(createDynamicItem('ingredients', 'Contoh: Pisang 1 buah'));
         });
         
-        // Tombol tambah langkah
         document.getElementById('add-step').addEventListener('click', function() {
             const container = document.getElementById('step-wrap');
             container.appendChild(createDynamicItem('steps', 'Contoh: Blender semua bahan'));
         });
         
-        // Inisialisasi tombol hapus yang sudah ada
         document.querySelectorAll('.btn-remove').forEach(btn => {
             btn.addEventListener('click', function() {
                 const item = this.closest('.dynamic-item');
@@ -362,7 +347,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             });
         });
         
-        // Preview file upload
         const fileInput = document.querySelector('.file-input');
         const fileText = document.querySelector('.file-text');
         
@@ -376,7 +360,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             });
         }
         
-        // Validasi form sebelum submit
         const form = document.querySelector('.recipe-form');
         form.addEventListener('submit', function(e) {
             const name = document.getElementById('name').value.trim();

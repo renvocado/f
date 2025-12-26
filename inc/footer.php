@@ -1,6 +1,6 @@
   <footer class="footer">
     <div class="container">
-      <p>&copy; <?php echo date('Y'); ?> HealthyBite Drinks cr by: Rendi Setiawan Jodi. Semua hak cipta dilindungi.</p>
+      <p>&copy; <?php echo date('Y'); ?> Rendi Setiawan Jodi - 221011400830 - 07TPLP020.</p>
     </div>
   </footer>
 

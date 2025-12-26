@@ -2,7 +2,8 @@
 
 # HealthyBite Drinks (PHP Native)
 
-Aplikasi rekomendasi jus & smoothie berbasis web. Pengguna dapat memilih tujuan minuman (Detox, Energy, Diet, Relax), melihat resep, serta menghitung kalori per porsi.
+Aplikasi rekomendasi jus & smoothie berbasis web. Pengguna dapat memilih tujuan minuman
+(Detox, Energy, Diet, Relax), melihat resep, serta menghitung kalori per porsi.
 
 Admin dapat mengelola resep melalui panel dashboard (CRUD + upload gambar).
 
@@ -94,74 +95,18 @@ Sesuaikan:
 - Dashboard ringkasan data
 
 
-  Bagian berikut merangkum tangkapan layar (screenshots) dari aplikasi HealthyBite Drinks. Semua gambar berada di folder `screenshot/`.
+## 📸 Screenshots (folder `screenshot/`)
 
-  1. ![Halaman Awal](screenshot/Halaman_Awal.jpg)
+1. Halaman Awal — `Halaman_Awal.jpg`
+2. Halaman Beranda User — `Halaman_BerandaUser.jpg`
+3. Halaman Resep User — `Halaman_ResepUser.jpg`
+4. Cetak Resep — `Halaman_CetakResepUser.jpg`
+5. Halaman Daftar — `Halaman_Daftar.jpg`
+6. Halaman Login — `Halaman_Login.jpg`
+7. Dashboard Admin — `Halaman_BerandaAdmin.jpg`
+8. Kelola Resep — `Halaman_KelolaResepAdmin.jpg`
+9. Tambah Resep — `Halaman_TambahResepAdmin.jpg`
+10. Edit Resep — `Halaman_EditResepAdmin.jpg`
+11. Kelola User Admin — `Halaman_KelolaUserAdmin.jpg`
 
-    Halaman Awal (guest) — menampilkan informasi umum tentang kesehatan dan CTA untuk mendaftar/login. Pengunjung belum bisa melihat resep sampai mendaftar.
-
-  2. ![Halaman Beranda User](screenshot/Halaman_BerandaUser.jpg)
-
-    Halaman beranda user setelah login — menampilkan rekomendasi dan akses untuk melihat resep.
-
-  3. ![Halaman Resep User](screenshot/Halaman_ResepUser.jpg)
-
-    Tampilan detail resep untuk user yang menampilkan bahan, langkah, dan kalkulator porsi.
-
-  4. ![Halaman Cetak Resep User](screenshot/Halaman_CetakResepUser.jpg)
-
-    Opsi cetak resep pada tampilan user (versi catatan yang dapat dicetak).
-
-  5. ![Halaman Daftar](screenshot/Halaman_Daftar.jpg)
-
-    Form pendaftaran member — digunakan oleh pengunjung untuk membuat akun.
-
-  6. ![Halaman Login](screenshot/Halaman_Login.jpg)
-
-    Form login untuk admin/user.
-
-  7. ![Halaman Beranda Admin](screenshot/Halaman_BerandaAdmin.jpg)
-
-    Dashboard admin — ringkasan statistik dan akses untuk mengelola resep serta pengguna.
-
-  8. ![Kelola Resep Admin](screenshot/Halaman_KelolaResepAdmin.jpg)
-
-    Halaman list resep di admin — lihat, edit, hapus resep.
-
-  9. ![Halaman Tambah Resep Admin](screenshot/Halaman_TambahResepAdmin.jpg)
-
-    Form tambah resep pada panel admin.
-
-  10. ![Halaman Edit Resep Admin](screenshot/Halaman_EditResepAdmin.jpg)
-
-    Form edit resep pada panel admin (ubah nama, bahan, langkah, gambar, dll.).
-
-  11. ![Halaman Edit Password Admin](screenshot/Halaman_EditPasswordAdmin.jpg)
-
-    Form untuk admin mengubah password akun admin lain.
-
-  12. ![Halaman Kelola User Admin](screenshot/Halaman_KelolaUserAdmin.jpg)
-
-    Halaman manajemen user/admin — edit password, hapus akun.
-
-  📸 Semua screenshot diambil dari localhost (XAMPP). Fitur utama: login admin, CRUD resep, upload gambar, rekomendasi minuman sehat per kategori (detox, energy, diet, relax), dan sortir alphabet.
-
-    Halaman list resep di admin — lihat, edit, hapus resep.
-
-  11. ![Kelola User Admin](screenshot/Halaman_KelolaUserAdmin.jpg)
-
-    Halaman manajemen user/admin — edit password, hapus akun.
-
-  12. ![Halaman Login](screenshot/Halaman_Login.jpg)
-
-    Form login untuk admin/user.
-
-  13. ![Halaman Resep User](screenshot/Halaman_ResepUser.jpg)
-
-    Tampilan detail resep untuk user yang menampilkan bahan, langkah, dan kalkulator porsi.
-
-  14. ![Halaman Tambah Resep Admin](screenshot/Halaman_TambahResepAdmin.jpg)
-
-    Form tambah resep pada panel admin.
-  >>>>>>> 22692f3 (chore: add screenshots & README updates; restrict recipes to members; small CSS/JS cleanup)
-
+Semua screenshot diambil dari localhost (XAMPP).

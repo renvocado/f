@@ -59,11 +59,13 @@ require_admin();
                     <h3>Kelola Resep</h3>
                     <p>Tambah, edit, atau hapus resep minuman</p>
                 </a>
-                <a href="change_password.php" class="action-card">
-                    <div class="action-icon">🔒</div>
-                    <h3>Ganti Password</h3>
-                    <p>Ubah password akun admin</p>
-                </a>
+                <a href="users.php" class="action-card">
+  <div class="action-icon">👥</div>
+  <h3>Kelola User</h3>
+  <p>Admin dan pengguna aplikasi</p>
+</a>
+
+
             </div>
         </div>
     </div>
