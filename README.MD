@@ -94,33 +94,74 @@ Sesuaikan:
 - Dashboard ringkasan data
 
 
-## 🖼 Screenshots Aplikasi
+  Bagian berikut merangkum tangkapan layar (screenshots) dari aplikasi HealthyBite Drinks. Semua gambar berada di folder `screenshot/`.
 
-Semua file gambar berada di folder:
+  1. ![Halaman Awal](screenshot/Halaman_Awal.jpg)
 
-`/screenshot`
+    Halaman Awal (guest) — menampilkan informasi umum tentang kesehatan dan CTA untuk mendaftar/login. Pengunjung belum bisa melihat resep sampai mendaftar.
 
+  2. ![Halaman Beranda User](screenshot/Halaman_BerandaUser.jpg)
 
-### 🍹 Halaman User
+    Halaman beranda user setelah login — menampilkan rekomendasi dan akses untuk melihat resep.
 
-![Halaman Awal](screenshot/Halaman_Awal.jpg)
-![Halaman Beranda User](screenshot/Halaman_BerandaUser.jpg)
-![Halaman Semua Resep](screenshot/Halaman_Semua_Resep_User.jpg)
-![Halaman Resep User](screenshot/Halaman_ResepUser.jpg)
-![Halaman Cetak Resep User](screenshot/Halaman_CetakResepUser.jpg)
-![Halaman Daftar](screenshot/Halaman_Daftar.jpg)
-![Halaman Login](screenshot/Halaman_Login.jpg)
+  3. ![Halaman Resep User](screenshot/Halaman_ResepUser.jpg)
 
+    Tampilan detail resep untuk user yang menampilkan bahan, langkah, dan kalkulator porsi.
 
-### 🔐 Halaman Admin
+  4. ![Halaman Cetak Resep User](screenshot/Halaman_CetakResepUser.jpg)
 
-![Halaman Beranda Admin](screenshot/Halaman_BerandaAdmin.jpg)
-![Halaman Kelola Resep Admin](screenshot/Halaman_KelolaResepAdmin.jpg)
-![Halaman Tambah Resep Admin](screenshot/Halaman_TambahResepAdmin.jpg)
-![Halaman Edit Resep Admin](screenshot/Halaman_EditResepAdmin.jpg)
-![Halaman Edit Password Admin](screenshot/Halaman_EditPasswordAdmin.jpg)
-![Halaman Kelola User Admin](screenshot/Halaman_KelolaUserAdmin.jpg)
+    Opsi cetak resep pada tampilan user (versi catatan yang dapat dicetak).
 
+  5. ![Halaman Daftar](screenshot/Halaman_Daftar.jpg)
 
-📸 Semua screenshot diambil dari localhost (XAMPP).  
-👨‍💻 Fitur utama: login member & admin, CRUD resep, upload gambar, kategori minuman (detox, energy, diet, relax), sorting, pencarian, dan pembatasan akses resep untuk user terdaftar.
+    Form pendaftaran member — digunakan oleh pengunjung untuk membuat akun.
+
+  6. ![Halaman Login](screenshot/Halaman_Login.jpg)
+
+    Form login untuk admin/user.
+
+  7. ![Halaman Beranda Admin](screenshot/Halaman_BerandaAdmin.jpg)
+
+    Dashboard admin — ringkasan statistik dan akses untuk mengelola resep serta pengguna.
+
+  8. ![Kelola Resep Admin](screenshot/Halaman_KelolaResepAdmin.jpg)
+
+    Halaman list resep di admin — lihat, edit, hapus resep.
+
+  9. ![Halaman Tambah Resep Admin](screenshot/Halaman_TambahResepAdmin.jpg)
+
+    Form tambah resep pada panel admin.
+
+  10. ![Halaman Edit Resep Admin](screenshot/Halaman_EditResepAdmin.jpg)
+
+    Form edit resep pada panel admin (ubah nama, bahan, langkah, gambar, dll.).
+
+  11. ![Halaman Edit Password Admin](screenshot/Halaman_EditPasswordAdmin.jpg)
+
+    Form untuk admin mengubah password akun admin lain.
+
+  12. ![Halaman Kelola User Admin](screenshot/Halaman_KelolaUserAdmin.jpg)
+
+    Halaman manajemen user/admin — edit password, hapus akun.
+
+  📸 Semua screenshot diambil dari localhost (XAMPP). Fitur utama: login admin, CRUD resep, upload gambar, rekomendasi minuman sehat per kategori (detox, energy, diet, relax), dan sortir alphabet.
+
+    Halaman list resep di admin — lihat, edit, hapus resep.
+
+  11. ![Kelola User Admin](screenshot/Halaman_KelolaUserAdmin.jpg)
+
+    Halaman manajemen user/admin — edit password, hapus akun.
+
+  12. ![Halaman Login](screenshot/Halaman_Login.jpg)
+
+    Form login untuk admin/user.
+
+  13. ![Halaman Resep User](screenshot/Halaman_ResepUser.jpg)
+
+    Tampilan detail resep untuk user yang menampilkan bahan, langkah, dan kalkulator porsi.
+
+  14. ![Halaman Tambah Resep Admin](screenshot/Halaman_TambahResepAdmin.jpg)
+
+    Form tambah resep pada panel admin.
+  >>>>>>> 22692f3 (chore: add screenshots & README updates; restrict recipes to members; small CSS/JS cleanup)
+
